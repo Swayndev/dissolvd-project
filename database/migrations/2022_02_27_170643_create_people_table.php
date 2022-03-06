@@ -14,7 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
+            // $table->id();
+            // Crew
             $table->id();
+            $table->movie_id()->require();
+            $table->array('crew_list')->nullable();
+            $table->string('director');
+
+
+            // Cast
+            $table->id();
+            $table->movie_id()->require();
+            $table->array('cast_list')->nullable();
+
+
             $table->timestamps();
         });
     }

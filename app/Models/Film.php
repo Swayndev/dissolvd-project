@@ -9,6 +9,8 @@ class Film extends Model
 {
     use HasFactory;
 
-    // Define here the relationship for movies and other items
-
+    public function person()
+    {
+        return $this->hasOne(People::class);
+    }
 }

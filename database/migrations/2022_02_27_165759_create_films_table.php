@@ -14,10 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('films', function (Blueprint $table) {
-            $table->id();
+            $table->id()->require();
+            $table->string('title')->unique();
+            $table->year('release_year');
+            $table->string('director');
 
-            // Define here the structure of the movie table 
+            $table->tinytext('synopsis')->nullable();
+            $table->tinytext('comment');
+            $table->float('rating');
 
+            $table->string('genre')->nullable();
+            $table->array('cast');  # check what is the best data type for cast and for crew
+            $table->array('crew');
+            
             $table->timestamps();
         });
     }
